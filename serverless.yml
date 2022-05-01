@@ -1,0 +1,45 @@
+service: todos
+
+frameworkVersion: '3'
+
+plugins:
+  - ./../../serverless-appsync-plugin
+  - serverless-iam-roles-per-function
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+appSync:
+  name: myApi
+
+  authentication:
+    type: API_KEY
+
+  apiKeys:
+    - name: Ben
+      expiresAfter: 1y
+
+  logging:
+    level: ALL
+
+  resolvers:
+    Query.getTodo:
+      request: false
+      response: false
+      dataSource:
+        type: 'AWS_LAMBDA'
+        config:
+          function:
+            timeout: 30
+            handler: 'src/getTodo.handler'
+
+    Todo.items:
+      request: false
+      response: false
+      dataSource:
+        type: 'AWS_LAMBDA'
+        config:
+          function:
+            timeout: 30
+            handler: 'src/getTodoItems.handler'

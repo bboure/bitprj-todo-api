@@ -1,0 +1,16 @@
+{
+  "name": "bitprj-todo-api",
+  "version": "1.0.0",
+  "description": "A simple To do GraphQL API built with AWS AppSync",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless": "^3.16.0",
+    "serverless-appsync-plugin": "^2.0.0-alpha.2",
+    "serverless-iam-roles-per-function": "^3.2.0"
+  }
+}
